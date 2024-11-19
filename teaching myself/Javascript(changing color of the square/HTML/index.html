@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        #square {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            background-color: pink !important;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="button" onclick="changeColor()">click</button>
+    <div id="square"></div>
+
+    <script>
+        let button = document.querySelector('#button');
+
+        function changeColor() {
+            let square = document.getElementById('square');
+            square.style.backgroundColor = 'red';
+        }
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            let square = document.getElementById('square');
+            let computedStyle = getComputedStyle(square);
+            console.log(computedStyle.backgroundColor); // Logs 'pink' due to CSS rules
+        });
+    </script>
+</body>
+
+</html>
