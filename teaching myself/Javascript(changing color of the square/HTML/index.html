@@ -2,35 +2,36 @@
 <html>
 
 <head>
-    <title></title>
+    <title>Example</title>
     <style>
+        :root {
+            --my-color: pink;
+        }
+
         #square {
             width: 200px;
             height: 200px;
-            background-color: blue;
-            background-color: pink !important;
+            background-color: var(--my-color);
             margin: 50px auto;
         }
     </style>
 </head>
 
 <body>
-    <button id="button" onclick="changeColor()">click</button>
+    <button id="button" onclick="changeColor()">Click</button>
     <div id="square"></div>
 
     <script>
-        let button = document.querySelector('#button');
+        window.onload = function () {
+            const rootStyle = document.documentElement.style;
+            const boxColor = getComputedStyle(document.documentElement).getPropertyValue('--my-color').trim();
+            console.log(boxColor); // Logs 'pink'
+        };
 
         function changeColor() {
             let square = document.getElementById('square');
             square.style.backgroundColor = 'red';
         }
-
-        document.addEventListener("DOMContentLoaded", function (event) {
-            let square = document.getElementById('square');
-            let computedStyle = getComputedStyle(square);
-            console.log(computedStyle.backgroundColor); // Logs 'pink' due to CSS rules
-        });
     </script>
 </body>
 
